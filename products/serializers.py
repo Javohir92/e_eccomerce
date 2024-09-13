@@ -7,7 +7,7 @@ class CategoryListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        exclude = ('image', )
+        exclude = ('image',)
 
 
 class ProductListSerializer(serializers.ModelSerializer):

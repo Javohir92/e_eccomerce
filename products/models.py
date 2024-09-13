@@ -19,6 +19,9 @@ class Category(models.Model):
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 
+    class MPTTMeta:
+        order_insertion_by = ['name']
+
 
 class Product(models.Model):
     name = models.CharField(_("name"), max_length=255)
@@ -43,7 +46,8 @@ class ProductColor(models.Model):
     
     def __str__(self):
         return f"Product: {self.product.id} | Color: {self.color.id}"
-    
+
+
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
     image = models.ForeignKey(Media, on_delete=models.CASCADE, null=True, blank=True)
